@@ -1,0 +1,94 @@
+.student {
+  padding: 110px 70px 0 70px;
+  margin: 0 auto;
+}
+
+.student__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 66px 0 0;
+}
+
+.student__info-text {
+  display: flex;
+  flex-direction: column;
+  margin: 0 49px 0 0;
+}
+
+.student__info-name {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  margin: 0;
+  padding: 0;
+}
+
+.student__info-about {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.student__info-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  max-width: 600px;
+  margin: 26px 0 0;
+  padding: 0;
+}
+
+.student__info-github {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: auto 0;
+  padding: 0;
+}
+
+.student__info-github_link {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 99px;
+  transition: all 0.2s linear;
+}
+
+.student__info-github_link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+.student__info-photo {
+  max-width: 270px;
+  max-height: 327px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .student__info-name {
+    font-size: 40px;
+  }
+
+  .student__info-about {
+    font-size: 12px;
+    margin: 16px 0 0;
+  }
+
+  .student__info-description {
+    font-size: 12px;
+  }
+
+  .student__info-github_link {
+    margin-top: 87px;
+  }
+
+  .student__info-photo {
+    width: 255px;
+    height: 307px;
+  }
+}

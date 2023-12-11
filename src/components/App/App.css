@@ -1,0 +1,13 @@
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+.app {
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,0 +1,29 @@
+.promo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #272727;
+    border-radius: 10px;
+    color: #ffff;
+}
+
+.promo__text {
+    display: flex;
+    margin: 160px auto;
+    max-width: 730px;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px) {
+     .promo__text {
+        margin: 350px auto 314px auto ;
+        max-width: 680px;
+        font-size: 40px;
+    }
+}
