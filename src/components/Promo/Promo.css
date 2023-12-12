@@ -1,6 +1,6 @@
 .promo {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,9 +21,24 @@
 }
 
 @media screen and (max-width: 768px) {
+    .promo {
+        margin: 20px 20px 0 20px;
+    }
+
      .promo__text {
         margin: 350px auto 314px auto ;
         max-width: 680px;
         font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .promo {
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+
+    .promo__text {
+        font-size: 29px;
     }
 }

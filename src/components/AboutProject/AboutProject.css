@@ -90,3 +90,38 @@
         margin-top: 93px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .about-project {
+        padding: 70px 18px 70px 18px;
+    }
+
+    .about-project__container {
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .about-project__info {
+        max-width: 100%;
+    }
+
+    .about-project__info-title {
+        font-size: 18px;
+    }
+
+    .about-project__info-text {
+        font-size: 11px;
+        line-height: 1.2;
+        margin-top: 16px;
+    }
+
+    .about-project__duration {
+        grid-template-columns: 36% 64%;
+        margin-top: 60px;
+        font-size: 11px;
+    }
+
+    .about-project__duration-line {
+        height: 35px;
+    }
+}
