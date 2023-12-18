@@ -1,33 +1,16 @@
 import './BurgerMenu.css';
-import { useEffect } from 'react';
-import cross from '../../images/Group.svg';
 import { Link } from 'react-router-dom';
-import { AccountButton } from '../AccountButton/AccountButton';
 
-export function BurgerMenu({ isOpen, handleClick, onClose }) {
-    useEffect(() => {
-        if (!isOpen) return;
-        
-        function handleESC(e) {
-          if (e.key === "Escape") {
-            onClose()
-          }
-        }
-        document.addEventListener("keydown", handleESC);
-    
-        return () => document.removeEventListener("keydown", handleESC);
-      }, [isOpen, onClose]);
-    
-    const handleOverlayClose = (e) => {
-        if (e.target === e.currentTarget && isOpen) {
-          onClose();
-        }
-    }
-
+export function BurgerMenu({ onClose }) {
     return (
-        <>
-            <div className={isOpen ? ''}>
-            </div>
-        </>
+      <>
+        <button className='menu__close-button' onClick={onClose} type='button'></button>
+        <nav className='menu__nav'>
+          <Link className='menu__nav-link' to='/'>Главная</Link>
+          <Link className='menu__nav-link menu__nav-link_active' to='/movies'>Фильмы</Link>
+          <Link className='menu__nav-link' to='/saved-movies'>Сохранённые фильмы</Link>
+          <button className='menu__accaunt-button'>Аккаунт</button>
+        </nav>
+      </>
     )
 }

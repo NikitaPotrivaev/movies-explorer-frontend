@@ -24,6 +24,12 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+    .button__disapear {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .button {
         width: 54px;

@@ -4,6 +4,16 @@
     padding: 100px 70px 0 70px;
 }
 
+.tech__main-title {
+    border-bottom: solid 1px #dadada;
+    padding-bottom: 23px;
+    letter-spacing: -0.04em;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin: 0;
+}
+
 .tech__container {
     display: flex;
     flex-direction: column;
@@ -84,6 +94,10 @@
     .tech {
         background-color: #202020;
         padding: 70px 14px 14px;
+    }
+
+    .tech__main-title {
+        border-bottom: solid 1px #000000;
     }
 
     .tech__title {
