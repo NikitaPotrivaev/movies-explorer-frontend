@@ -1,6 +1,6 @@
 import './SearchForm.css';
 import searchImg from '../../images/find-3.svg';
-import { FilterCheckbox } from '../FilterCheckbox/FilterCheckbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 
 export function SearchForm() {
 
@@ -14,7 +14,7 @@ export function SearchForm() {
                         <img src={searchImg} className='search__img'/>
                     </button>
                 </form>
-                <FilterCheckbox />
+                <Checkbox />
             </div>
     )
 }

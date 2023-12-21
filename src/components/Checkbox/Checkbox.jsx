@@ -1,6 +1,6 @@
-import './FilterCheckbox.css'
+import './Checkbox.css'
 
-export function FilterCheckbox() {
+export function Checkbox() {
     return (
         <div className="checkbox">
             <p className="checkbox__caption">Короткометражки</p>

@@ -1,0 +1,31 @@
+.navigation__links {
+    display: flex;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation__links-films {
+    list-style: none;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 0.72;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.navigation__links-films:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation__links {
+        display: none;
+    }
+}

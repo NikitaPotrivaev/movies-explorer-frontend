@@ -1,0 +1,12 @@
+.saved__movies {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 89%;
+    max-width: 1140px;
+}
+
+.saved__margin {
+    width: 100%;
+    height: 140px;
+}

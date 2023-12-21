@@ -3,14 +3,25 @@ import { Header } from "../Header/Header";
 import { Main } from '../Main/Main';
 import { Footer } from '../Footer/Footer';
 import { Movies } from '../Movies/Movies'
+import { SavedMovies } from '../SavedMovies/SavedMovies';
+import { FormLogin } from '../FormLogin/FormLogin';
+import { FormRegister } from '../FormRegister/FormRegister';
+import { NotFound } from '../NotFound/NotFound';
+import { Profile } from '../Profile/Profile';
+import { Route } from 'react-router-dom';
+
 
 export function App() {
     return (
         <div className="app">
             <Header />
             <Main />
-            <Footer />
             <Movies />
+            <SavedMovies />
+            <FormLogin />
+            <FormRegister />
+            <NotFound />
+            <Profile />
         </div>
     );
 }

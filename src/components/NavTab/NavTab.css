@@ -8,10 +8,13 @@
 }
 
 .nav__button {
+  display: flex;
+  justify-content: center;
   width: 96px;
   height: 36px;
   border-radius: 10px;
-  text-align: center;
+  text-decoration: none;
+  align-items: center;
   margin: auto;
   border: 0;
   font-size: 12px;

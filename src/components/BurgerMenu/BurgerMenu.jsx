@@ -7,7 +7,7 @@ export function BurgerMenu({ onClose }) {
         <button className='menu__close-button' onClick={onClose} type='button'></button>
         <nav className='menu__nav'>
           <Link className='menu__nav-link' to='/'>Главная</Link>
-          <Link className='menu__nav-link menu__nav-link_active' to='/movies'>Фильмы</Link>
+          <Link className='menu__nav-link' to='/movies'>Фильмы</Link>
           <Link className='menu__nav-link' to='/saved-movies'>Сохранённые фильмы</Link>
           <button className='menu__accaunt-button'>Аккаунт</button>
         </nav>

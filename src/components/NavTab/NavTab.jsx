@@ -2,10 +2,34 @@ import './NavTab.css';
 
 export function NavTab() {
     return (
-        <nav className='nav__buttons'>
-            <button className='nav__button'>О проекте</button>
-            <button className='nav__button'>Технологии</button>
-            <button className='nav__button'>Студент</button>
-        </nav>
+      <nav className='nav__buttons'>
+            <a href='#about' className='nav__button'
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('about');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >О проекте</a>
+            <a href='#techs' className='nav__button'
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('techs');
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+            >Технологии</a>
+            <a href='#student' className='nav__button'
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('student');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >Студент</a>
+  </nav>
     )
 }

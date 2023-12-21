@@ -4,6 +4,7 @@ import { AccountButton } from '../AccountButton/AccountButton';
 import { Link } from 'react-router-dom';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useState, useEffect } from 'react';
+import { Navigation } from '../Navigation/Navigation';
 
 export function Header() {
     const [isLoggedin, setIsLoggedin] = useState(false);
@@ -28,16 +29,13 @@ export function Header() {
 
     return (
         <header className="header">
-                <Logo handleClick = {handleClick} />
+                <Logo handleClick = {handleClick}/>
                 {isLoggedin ? (
             <>
-            <ul className='header__links'>
-                <Link className='header__links-films' to='/movies'>Фильмы</Link>
-                <Link className='header__links-films' to='/saved-movies'>Сохранённые фильмы</Link>
-            </ul>
+                <Navigation />
                 <Link className='header__account' to='/profile'>
                     <AccountButton isLoggedin={isLoggedin} />
-                    <button className='header__burger' onClick={toggleMenu} type='button'></button>
+                    <button className='header__burger' onClick={toggleMenu} type='button'></button>  
                 {isMenuOpen ? (
                     <>
                     <div className='menu menu_opened'></div>
@@ -53,13 +51,13 @@ export function Header() {
                     </div>
                     </>
                     )}
-                </Link>
+                </Link>  
             </>
                 ) : (
-            <div className='header__account'>
-                <Link to="/signup" className="header__register">Регистрация</Link>
-                <AccountButton isLoggedin={isLoggedin}/>
-            </div>
+                <div className='header__account'>
+                    <Link to="/signup" className="header__register">Регистрация</Link>
+                        <AccountButton isLoggedin={isLoggedin}/>
+                </div>
                 )}
         </header>
     );
