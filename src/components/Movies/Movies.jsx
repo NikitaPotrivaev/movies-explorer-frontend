@@ -5,18 +5,21 @@ import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
 import { More } from '../More/More';
 import { Preloader } from '../Preloader/Preloader';
 import { movies } from '../utils/movies';
+import { Footer } from '../Footer/Footer'
+import { Header } from '../Header/Header';
 
 export function Movies() {
 
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(!isLoading), 3000)
+        const timer = setTimeout(() => setIsLoading(!isLoading), 4000)
         return () => clearTimeout(timer)
     }, [])
 
     return (
         <section className='movies'>
+            <Header />
             <SearchForm />
             {!isLoading ? (
                 <Preloader />
@@ -27,6 +30,7 @@ export function Movies() {
                 />
             )}
             <More />
+            <Footer />
         </section>
     )
 }

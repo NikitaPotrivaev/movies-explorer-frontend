@@ -9,6 +9,7 @@ import { Footer } from '../Footer/Footer';
 export function Main() {
     return (
         <>
+            <Header />
             <main className='main'>
                 <Promo />
                 <AboutProject />

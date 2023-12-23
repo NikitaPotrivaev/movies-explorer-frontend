@@ -35,7 +35,8 @@ export function Header() {
                 <Navigation />
                 <Link className='header__account' to='/profile'>
                     <AccountButton isLoggedin={isLoggedin} />
-                    <button className='header__burger' onClick={toggleMenu} type='button'></button>  
+                    <button className='header__burger' onClick={toggleMenu} type='button'></button>
+                </Link> 
                 {isMenuOpen ? (
                     <>
                     <div className='menu menu_opened'></div>
@@ -50,13 +51,14 @@ export function Header() {
                         <BurgerMenu />
                     </div>
                     </>
-                    )}
-                </Link>  
+                    )} 
             </>
                 ) : (
                 <div className='header__account'>
                     <Link to="/signup" className="header__register">Регистрация</Link>
-                        <AccountButton isLoggedin={isLoggedin}/>
+                        <Link to='/signin'>
+                            <AccountButton isLoggedin={isLoggedin}/>
+                        </Link>
                 </div>
                 )}
         </header>

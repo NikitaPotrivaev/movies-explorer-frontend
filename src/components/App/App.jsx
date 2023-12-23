@@ -8,20 +8,35 @@ import { FormLogin } from '../FormLogin/FormLogin';
 import { FormRegister } from '../FormRegister/FormRegister';
 import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
-import { Route } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 
 export function App() {
     return (
         <div className="app">
-            <Header />
-            <Main />
-            <Movies />
-            <SavedMovies />
-            <FormLogin />
-            <FormRegister />
-            <NotFound />
-            <Profile />
+            <Routes>
+                <Route path='/'
+                    element = {<Main/>}
+                />
+                <Route path='/movies'
+                    element = {<Movies/>}
+                />
+                <Route path='/saved-movies'
+                   element = {<SavedMovies />}
+                />
+                <Route path='/profile'
+                   element = {<Profile />}
+                />
+                <Route path="/signup"
+                   element = {<FormRegister />}
+                />
+                <Route path="/signin"
+                    element = {<FormLogin />}
+                />
+                <Route path='*'
+                    element = {<NotFound />}
+                />
+            </Routes>
         </div>
     );
 }
