@@ -1,14 +1,12 @@
 import './App.css'
-import { Header } from "../Header/Header";
 import { Main } from '../Main/Main';
-import { Footer } from '../Footer/Footer';
 import { Movies } from '../Movies/Movies'
 import { SavedMovies } from '../SavedMovies/SavedMovies';
 import { FormLogin } from '../FormLogin/FormLogin';
 import { FormRegister } from '../FormRegister/FormRegister';
 import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 
 export function App() {
