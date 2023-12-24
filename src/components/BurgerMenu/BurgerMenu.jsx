@@ -10,7 +10,7 @@ export function BurgerMenu({ onClose }) {
           <Link className='menu__nav-link' to='/movies'>Фильмы</Link>
           <Link className='menu__nav-link' to='/saved-movies'>Сохранённые фильмы</Link>
           <Link to='/profile'>
-            <button className='menu__accaunt-button'>Аккаунт</button>
+            <button className='menu__nav-accaunt-button'>Аккаунт</button>
           </Link>
         </nav>
       </>

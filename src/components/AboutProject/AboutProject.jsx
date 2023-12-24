@@ -16,10 +16,10 @@ export function AboutProject() {
                 </article>
             </div>
             <div className="about-project__duration">
-                <div className="about-project__duration-line about-project__duration-line_backend">1 неделя</div>
-                <div className="about-project__duration-line about-project__duration-line_fronend">4 недели</div>
-                <div className="about-project__duration-line about-project__duration-line_backend-title">Back-end</div>
-                <div className="about-project__duration-line about-project__duration-line_frontend-title">Front-end</div>
+                <p className="about-project__duration-line about-project__duration-line_backend">1 неделя</p>
+                <p className="about-project__duration-line about-project__duration-line_fronend">4 недели</p>
+                <p className="about-project__duration-line about-project__duration-line_backend-title">Back-end</p>
+                <p className="about-project__duration-line about-project__duration-line_frontend-title">Front-end</p>
             </div>
         </section>
     )

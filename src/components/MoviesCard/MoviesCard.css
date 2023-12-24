@@ -77,19 +77,13 @@
     line-height: 1.1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 846px) {
 
     .movies-card__img {
         max-width: 339px;
         max-height: 190px;
     }
 
-    .movies-card__info {
-        margin: 25px 0 0 0;
-    }
-}
-
-@media screen and (max-width: 768px) {
     .movies-card__info {
         margin: 16px 0 0 0;
     }
@@ -98,5 +92,10 @@
 @media screen and (max-width: 500px) {
     .movies-card__delete {
         visibility: visible;
+    }
+
+    .movies-card__img {
+        max-width: 300px;
+        max-height: 168px;
     }
 }

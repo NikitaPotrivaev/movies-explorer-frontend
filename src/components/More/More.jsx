@@ -2,6 +2,6 @@ import './More.css'
 
 export function More() {
     return (
-            <button className='more'>Ещё</button>
+            <button type='text' className='more'>Ещё</button>
     )
 }

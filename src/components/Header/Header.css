@@ -1,9 +1,10 @@
 .header {
-    max-width: 1280px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 70px 18px 70px;
+    padding: 18px 0 18px 0;
+    width: 90.41%;
+    margin: auto;
 }
 
 .header__account {
@@ -11,6 +12,7 @@
     align-items: center;
     gap: 30px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .header__register {
@@ -33,7 +35,9 @@
 
 @media screen and (max-width: 768px) {
     .header {
-        padding: 18px 30px 18px 30px;
+        padding: 18px 0 18px 0;
+        width: 94.28%;
+        margin: auto;
     }
 
     .header__burger {
@@ -53,9 +57,64 @@
     }
 }
 
+.header__menu {
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity ease 0.7s;
+}
+
+.header__menu_opened {
+    visibility: visible;
+    opacity: .3;
+}
+
+.header__menu-container {
+    display: none;
+    position: absolute;
+    width: 68%;
+    height: 100vh;
+    max-width: 1024px;
+    background-color: #202020;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 159px;
+    padding-bottom: 90px;
+    z-index: 1;
+}
+
+.header__menu-container_opened  {
+    display: block;
+}
+
+.menu__close-button {
+    background-image: url(../../images/Group.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border: none;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
 @media screen and (max-width: 500px) {
     .header {
-        padding: 18px 14px 18px 14px;
+        padding: 18px 0 18px 0;
+        width: 93.80%;
+        margin: auto;
     }
 
     .header__account {
@@ -69,5 +128,15 @@
     .header__burger {
         width: 40px;
         height: 43px;
+    }
+
+    .header__menu {
+        width: 100%;
+        padding-top: 144px;
+        padding-bottom: 46px;
+    }
+
+    .header__menu-container {
+        width: 100%;
     }
 }

@@ -1,5 +1,5 @@
 .student {
-    padding: 110px 70px 0 70px;
+    padding: 110px 50px 0 50px;
     margin: 0 auto;
   }
   
@@ -93,7 +93,7 @@
     }
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: 530px) {
     .student {
       padding: 56px 14px 0 14px;
     }

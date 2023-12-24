@@ -7,6 +7,8 @@
 }
 
 .form__header {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -25,7 +27,7 @@
     width: 100%;
 }
 
-.form__inputs {
+.form__base-inputs {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,7 +36,7 @@
     margin-bottom: 41px;
 }
 
-.form__button {
+.form__base-button {
     margin: 69px auto 16px;
     width: 100%;
     padding: 0;
@@ -50,17 +52,17 @@
     transition: all 0.2s linear;
 }
 
-.form__button:hover {
+.form__base-button:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
-.form__buttton_inactive {
+.form__base-buttton_inactive {
     background-color: #f8f8f8;
     color: #c2c2c2;
 }
 
-.form__buttton_inactive:hover {
+.form__base-buttton_inactive:hover {
     opacity: 1;
 }
 
@@ -108,10 +110,11 @@
 
     .form__header {
         align-items: center;
+
     }
 
     .form__header-title {
-        margin: 50px 0 80px 0;
+        margin: 50px auto 80px auto;
     }
 
     .form__link-container {

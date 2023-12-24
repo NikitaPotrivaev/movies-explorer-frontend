@@ -11,10 +11,10 @@ export function Form({children, title, text, linkCaption, linkText, path, onSubm
                 <h2 className="form__header-title">{title}</h2>
             </div>
             <form className="form__base" onSubmit={onSubmit} noValidate>
-                <div className="form__inputs">
+                <div className="form__base-inputs">
                     {children}
                 </div>
-                    <button className={isValid ? 'form__button' : 'form__button form__buttton_inactive'} disabled={isDisabled}>{text}</button>
+                    <button className={isValid ? 'form__base-button' : 'form__base-button form__base-buttton_inactive'} disabled={isDisabled}>{text}</button>
                 <div className="form__link-container">
                     <p className="form__link-caption">{linkCaption}</p>
                     <Link className="form__link" to={path}>{linkText}</Link>

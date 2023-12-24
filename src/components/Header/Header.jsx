@@ -7,17 +7,12 @@ import { useState, useEffect } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 
 export function Header() {
-    const [isLoggedin, setIsLoggedin] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
         const body = document.querySelector('body');
         body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
       }, [isMenuOpen]);
-
-    function handleClick() {
-        setIsLoggedin(true)
-    }
 
     function toggleMenu() {
         setMenuOpen(!isMenuOpen)
@@ -27,9 +22,11 @@ export function Header() {
         setMenuOpen(false)
     }
 
+    const isLoggedin = true;
+
     return (
         <header className="header">
-                <Logo handleClick = {handleClick}/>
+                <Logo />
                 {isLoggedin ? (
             <>
                 <Navigation />
@@ -39,15 +36,15 @@ export function Header() {
                 <button className='header__burger' onClick={toggleMenu} type='button'></button>
                 {isMenuOpen ? (
                     <>
-                    <div className='menu menu_opened'></div>
-                    <div className='menu__container menu__container_opened'>
+                    <div className='header__menu header__menu_opened'></div>
+                    <div className='header__menu-container header__menu-container_opened'>
                         <BurgerMenu onClose={closeMenu}/>
                     </div>
                     </>
                 ) : (
                     <>
-                    <div className='menu'></div>
-                    <div className='menu__container'>
+                    <div className='header__menu'></div>
+                    <div className='header__menu-container'>
                         <BurgerMenu />
                     </div>
                     </>
