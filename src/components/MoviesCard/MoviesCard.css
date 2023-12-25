@@ -43,12 +43,6 @@
     cursor: pointer;
     max-width: 360px;
     max-height: 201px;
-    transition: box-shadow .3s ease;
-}
-
-.movies-card__img:hover {
-    opacity: .8;
-    box-shadow: 0 0 20px #4E52B0;
 }
 
 .movies-card__img:hover + .movies-card__save {
@@ -60,6 +54,10 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 250px;
 }
 
 .movies-card__duration {
@@ -97,5 +95,9 @@
     .movies-card__img {
         max-width: 300px;
         max-height: 168px;
+    }
+
+    .movies-card__title {
+        max-width: 240px;
     }
 }

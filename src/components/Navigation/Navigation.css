@@ -5,10 +5,10 @@
     line-height: 1.2;
     gap: 16px;
     margin: 0;
-    padding: 0;
+    padding-left: 65px;
 }
 
-.navigation__links-films {
+.navigation__link-films {
     list-style: none;
     text-decoration: none;
     color: #FFF;
@@ -19,7 +19,7 @@
     transition: all 0.2s linear;
 }
 
-.navigation__links-films:hover {
+.navigation__link-films:hover {
     opacity: 0.6;
     cursor: pointer;
 }

@@ -13,7 +13,7 @@
     line-height: 1.2;
 }
 
-.checkbox__checkbox {
+.checkbox__input {
     width: 34px;
     height: 14px;
     background-color: #ebebeb;
@@ -25,7 +25,7 @@
     transition: all linear 0.3s;
 }
 
-.checkbox__checkbox::after {
+.checkbox__input::after {
     position: absolute;
     top: 2px;
     left: 2px;
@@ -37,11 +37,11 @@
     transition: all linear 0.3s;
 }
 
-.checkbox__checkbox:checked {
+.checkbox__input:checked {
     background-color: #2be080;
 }
  
-.checkbox__checkbox:checked:after {
+.checkbox__input:checked:after {
     background-color: #ffff;
     left: 22px;
 }

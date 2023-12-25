@@ -52,7 +52,7 @@ export function Header() {
             </>
                 ) : (
                 <div className='header__account'>
-                    <Link to="/signup" className="header__register">Регистрация</Link>
+                    <Link to="/signup" className="header__account-register">Регистрация</Link>
                         <Link to='/signin'>
                             <AccountButton isLoggedin={isLoggedin}/>
                         </Link>

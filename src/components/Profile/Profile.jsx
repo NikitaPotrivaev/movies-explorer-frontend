@@ -6,7 +6,7 @@ export function Profile() {
     return (
         <>
             <Header />
-            <div className='profile'>
+            <section className='profile'>
                 <h3 className='profile__title'>Привет, Никитос!</h3>
                 <form className='profile__form'>
                     <label className='profile__input-container'>Имя
@@ -18,7 +18,7 @@ export function Profile() {
                     <button className='profile__button' type='submit'>Редактировать</button>
                 </form>
                 <Link className='profil__exit' to='/'>Выйти из аккаунта</Link>
-            </div>
+            </section>
         </>
     )
 }

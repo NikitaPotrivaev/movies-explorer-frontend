@@ -5,7 +5,7 @@ import { Logo } from "../Logo/Logo";
 export function Form({children, title, text, linkCaption, linkText, path, onSubmit, isDisabled, isValid}) {
 
     return (
-        <div className="form">
+        <section className="form">
             <div className="form__header">
                 <Logo />
                 <h2 className="form__header-title">{title}</h2>
@@ -20,6 +20,6 @@ export function Form({children, title, text, linkCaption, linkText, path, onSubm
                     <Link className="form__link" to={path}>{linkText}</Link>
                 </div>
             </form>
-        </div>
+        </section>
     )
 }

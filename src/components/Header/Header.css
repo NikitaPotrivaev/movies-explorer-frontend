@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 18px 0 18px 0;
-    width: 90.41%;
+    width: 89.10%;
     margin: auto;
 }
 
@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 
-.header__register {
+.header__account-register {
     font-size: 12px;
     line-height: 1.2;
     font-weight: 500;
@@ -24,7 +24,7 @@
     color: #FFF;
 }
 
-.header__register:hover {
+.header__account-register:hover {
     opacity: 0.6;
     cursor: pointer;
 }
@@ -121,7 +121,7 @@
         gap: 14px;
     }
 
-    .header__register {
+    .header__account-register {
         font-size: 10px;
     }
 
