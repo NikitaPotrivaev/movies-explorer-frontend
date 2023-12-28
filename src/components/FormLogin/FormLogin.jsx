@@ -22,16 +22,16 @@ export function FormLogin() {
                 linkText='Регистрация'
                 path="/signup"
             >
-            <label className='input'>
-                <figcaption className='input__info'>E-mail</figcaption>
+            <div className='input'>
+                <p className='input__info'>E-mail</p>
                 <input name='email' className='input__element' type='email' value={values.email || '' } onChange={ handleChange } minLength="2" maxLength="40" required />
-                    <span name='email-error' className='input__error input__error_active'>{errors.email || '' }</span>
-            </label>
-            <label className='input'>
-                <figcaption className='input__info'>Пароль</figcaption>
+                    <span className='input__error input__error_active'>{errors.email || '' }</span>
+            </div>
+            <div className='input'>
+                <p className='input__info'>Пароль</p>
                 <input name='password' className='input__element' type='password' value={values.password || '' } onChange={ handleChange } minLength="6" maxLength="40" required />
-                    <span name='email-error' className='input__error input__error_active'>{errors.password || '' }</span>
-            </label>
+                    <span className='input__error input__error_active'>{errors.password || '' }</span>
+            </div>
             </Form>
         </>
     )

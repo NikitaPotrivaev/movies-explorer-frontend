@@ -1,10 +1,10 @@
-.movies-card__container {
+.movies__container {
     width: 90.41%;
     margin-top: 10px;
     margin: auto;
 }
 
-.movies-card__list {
+.movies__list {
     display: grid;
     justify-content: center;
     column-gap: 30px;
@@ -15,19 +15,19 @@
 }
 
 @media screen and (max-width: 847px) {
-    .movies-card__list {
+    .movies__list {
         row-gap: 47px;
         grid-template-columns: repeat(auto-fit, 339px);
         margin-top: 70px;
     }
 
-    .movies-card__container {
+    .movies__container {
         width: 94.28%;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .movies-card__list {
+    .movies__list {
         row-gap: 39px;
         grid-template-columns: repeat(auto-fit, 300px);
         margin-top: 40px;

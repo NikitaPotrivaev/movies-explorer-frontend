@@ -43,6 +43,7 @@
     cursor: pointer;
     max-width: 360px;
     max-height: 201px;
+    border-radius: 6px;
 }
 
 .movies-card__img:hover + .movies-card__save {

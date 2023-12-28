@@ -57,12 +57,22 @@
     opacity: 0.8;
 }
 
-.form__base-buttton_inactive {
+.form__base-buttton-inactive {
+    margin: 69px auto 16px;
+    width: 100%;
+    padding: 0;
+    height: 45px;
+    box-sizing: border-box;
     background-color: #f8f8f8;
     color: #c2c2c2;
+    border-radius: 3px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 100%;
 }
 
-.form__base-buttton_inactive:hover {
+.form__base-buttton-inactive:hover {
     opacity: 1;
 }
 

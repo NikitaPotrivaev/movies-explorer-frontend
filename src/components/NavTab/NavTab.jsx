@@ -2,7 +2,7 @@ import './NavTab.css';
 
 export function NavTab() {
     return (
-      <nav className='nav__buttons'>
+      <nav className='nav'>
             <a href='#about' className='nav__button'
               onClick={(e) => {
                 e.preventDefault();

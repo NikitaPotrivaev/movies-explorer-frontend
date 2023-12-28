@@ -17,7 +17,7 @@ export function Profile() {
                     </label>
                     <button className='profile__button' type='submit'>Редактировать</button>
                 </form>
-                <Link className='profil__exit' to='/'>Выйти из аккаунта</Link>
+                <Link className='profile__exit' to='/'>Выйти из аккаунта</Link>
             </section>
         </>
     )

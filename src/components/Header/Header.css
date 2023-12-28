@@ -15,6 +15,10 @@
     text-decoration: none;
 }
 
+.header__account-button_green {
+    text-decoration: none;
+}
+
 .header__account-register {
     font-size: 12px;
     line-height: 1.2;
@@ -93,21 +97,6 @@
 
 .header__menu-container_opened  {
     display: block;
-}
-
-.menu__close-button {
-    background-image: url(../../images/Group.svg);
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    border: none;
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    top: 23px;
-    right: 23px;
-    cursor: pointer;
-    transition: all linear 0.2s;
 }
 
 @media screen and (max-width: 500px) {

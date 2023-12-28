@@ -11,7 +11,7 @@ export function SearchForm() {
                         <input className='search__form-input' type='text' placeholder='Фильм' required/>
                     </div>
                     <button className='search__form-button' type='submit'>
-                        <img src={searchImg} className='search__img'/>
+                        <img src={searchImg} className='search__img' alt='Кнопка поиска'/>
                     </button>
                 </form>
                 <Checkbox />

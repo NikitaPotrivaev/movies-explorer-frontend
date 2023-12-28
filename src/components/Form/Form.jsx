@@ -14,7 +14,7 @@ export function Form({children, title, text, linkCaption, linkText, path, onSubm
                 <div className="form__base-inputs">
                     {children}
                 </div>
-                    <button className={isValid ? 'form__base-button' : 'form__base-button form__base-buttton_inactive'} disabled={isDisabled}>{text}</button>
+                    <button className={isValid ? 'form__base-button' : 'form__base-buttton-inactive'} disabled={isDisabled}>{text}</button>
                 <div className="form__link-container">
                     <p className="form__link-caption">{linkCaption}</p>
                     <Link className="form__link" to={path}>{linkText}</Link>

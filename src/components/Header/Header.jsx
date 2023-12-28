@@ -2,7 +2,7 @@ import './Header.css';
 import { Logo } from '../Logo/Logo';
 import { AccountButton } from '../AccountButton/AccountButton';
 import { Link } from 'react-router-dom';
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { HeaderBurgerMenu } from '../HeaderBurgerMenu/HeaderBurgerMenu';
 import { useState, useEffect } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 
@@ -38,14 +38,14 @@ export function Header() {
                     <>
                     <div className='header__menu header__menu_opened'></div>
                     <div className='header__menu-container header__menu-container_opened'>
-                        <BurgerMenu onClose={closeMenu}/>
+                        <HeaderBurgerMenu onClose={closeMenu}/>
                     </div>
                     </>
                 ) : (
                     <>
                     <div className='header__menu'></div>
                     <div className='header__menu-container'>
-                        <BurgerMenu />
+                        <HeaderBurgerMenu />
                     </div>
                     </>
                     )} 
@@ -53,7 +53,7 @@ export function Header() {
                 ) : (
                 <div className='header__account'>
                     <Link to="/signup" className="header__account-register">Регистрация</Link>
-                        <Link to='/signin'>
+                        <Link className='header__account-button_green' to='/signin'>
                             <AccountButton isLoggedin={isLoggedin}/>
                         </Link>
                 </div>

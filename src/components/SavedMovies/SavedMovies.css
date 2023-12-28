@@ -1,11 +1,11 @@
-.saved__movies {
+.movies {
     display: flex;
     flex-direction: column;
     align-self: center;
     width: 100%;
 }
 
-.saved__margin {
+.movies__devider {
     width: 100%;
     height: 140px;
 }

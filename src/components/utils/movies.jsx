@@ -2,9 +2,9 @@ import inception from '../../images/Inception.jpg';
 import departed from '../../images/Departed.jpg';
 import interstellar from '../../images/Interstellar.jpg'
 import shrek from '../../images/Шрек.jpeg';
-import pie from '../../images/Американский пирог.webp';
 import panin from '../../images/Жмурки.jpg';
-import dragon from '../../images/Как приручить дракона.jpeg';
+import run from '../../images/run.png';
+import germany from '../../images/germany.png';
 
 export const movies = [
     {
@@ -33,9 +33,9 @@ export const movies = [
   },
   {
     id: 5,
-    title: 'Американский пирог',
+    title: 'Бег это свобода',
     duration: '1ч 31м',
-    image: pie,
+    image: run,
   },
   {
     id: 6,
@@ -45,8 +45,8 @@ export const movies = [
   },
   {
     id: 7,
-    title: 'Как приручить дракона',
+    title: 'Когда я думаю о Германии ночью',
     duration: '1ч 31м',
-    image: dragon,
+    image: germany,
   }
 ]

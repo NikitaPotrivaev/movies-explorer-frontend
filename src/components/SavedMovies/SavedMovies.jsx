@@ -8,14 +8,14 @@ import { Header } from '../Header/Header';
 export function SavedMovies() {
     const isLoggedin = true
     return (
-        <section className='saved__movies'>
+        <section className='movies'>
             <Header isLoggedin={isLoggedin}/>
             <SearchForm />
             <MoviesCardList 
                 movies={movies}
                 isSaved={true}
             />
-            <div className="saved__margin"></div>
+            <div className="movies__devider"></div>
             <Footer />
         </section>
     )

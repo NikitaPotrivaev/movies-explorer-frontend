@@ -22,21 +22,21 @@ export function FormRegister() {
                 linkText='Войти'
                 path="/signin"
             >
-            <label className='input'>
-                <figcaption className='input__info'>Имя</figcaption>
+            <div className='input'>
+                <p className='input__info'>Имя</p>
                 <input name='name' className='input__element' type='text' value={values.name || '' } onChange={ handleChange } minLength="2" maxLength="40" required />
-                    <span name='name-error' className='input__error input__error_active'>{errors.name || '' }</span>
-            </label>
-            <label className='input'>
-                <figcaption className='input__info'>E-mail</figcaption>
+                    <span className='input__error input__error_active'>{errors.name || '' }</span>
+            </div>
+            <div className='input'>
+                <p className='input__info'>E-mail</p>
                 <input name='email' className='input__element' type='email' value={values.email || '' } onChange={ handleChange } minLength="2" maxLength="40" required />
-                    <span name='email-error' className='input__error input__error_active'>{errors.email || '' }</span>
-            </label>
-            <label className='input'>
-                <figcaption className='input__info'>Пароль</figcaption>
+                    <span className='input__error input__error_active'>{errors.email || '' }</span>
+            </div>
+            <div className='input'>
+                <p className='input__info'>Пароль</p>
                 <input name='password' className='input__element' type='password' value={values.password || '' } onChange={ handleChange } minLength="6" maxLength="40" required />
-                    <span name='email-error' className='input__error input__error_active'>{errors.password || '' }</span>
-            </label>
+                    <span className='input__error input__error_active'>{errors.password || '' }</span>
+            </div>
             </Form>
         </>
     )

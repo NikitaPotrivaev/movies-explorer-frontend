@@ -1,4 +1,4 @@
-.nav__buttons {
+.nav {
   display: flex;
   justify-content: center;
   margin: 0 auto 30px;
@@ -31,7 +31,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .nav__buttons {
+  .nav {
       gap: 6px;
   }
 

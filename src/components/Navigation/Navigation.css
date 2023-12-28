@@ -1,4 +1,4 @@
-.navigation__links {
+.navigate {
     display: flex;
     font-weight: 400;
     font-size: 13px;
@@ -8,7 +8,7 @@
     padding-left: 65px;
 }
 
-.navigation__link-films {
+.navigate__link {
     list-style: none;
     text-decoration: none;
     color: #FFF;
@@ -19,13 +19,13 @@
     transition: all 0.2s linear;
 }
 
-.navigation__link-films:hover {
+.navigate__link:hover {
     opacity: 0.6;
     cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-    .navigation__links {
+    .navigate {
         display: none;
     }
 }

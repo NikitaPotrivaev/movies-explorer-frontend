@@ -3,8 +3,8 @@ import { MoviesCard } from '../MoviesCard/MoviesCard';
 
 export function MoviesCardList({ movies, isMarked, isSaved }) {
     return (
-        <div className='movies-card__container'>
-            <ul className='movies-card__list'>
+        <div className='movies__container'>
+            <ul className='movies__list'>
                 {movies.map((moviesPoster) => (
                     <MoviesCard
                         key={moviesPoster.id}
