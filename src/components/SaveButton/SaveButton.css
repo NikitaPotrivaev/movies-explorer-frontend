@@ -1,0 +1,40 @@
+.movies-card__save {
+    position: absolute;
+    border: none;
+    border-radius: 30px;
+    background: none;
+    top: 14px;
+    right: 14px;
+    width: 72px;
+    height: 21px;
+    visibility: hidden;
+    background-image: url(../../images/saveButton.svg);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-position: cover;
+}
+
+.movies-card__save:hover {
+    visibility: visible;
+}
+
+.movies-card__marked {
+    position: absolute;
+    background-image: url(../../images/save3.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    top: 14px;
+    right: 14px;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .movies-card__save {
+        visibility: visible;
+    }
+}

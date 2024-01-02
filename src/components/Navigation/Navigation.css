@@ -1,0 +1,31 @@
+.navigate {
+    display: flex;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    gap: 16px;
+    margin: 0;
+    padding-left: 65px;
+}
+
+.navigate__link {
+    list-style: none;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 0.72;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.navigate__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .navigate {
+        display: none;
+    }
+}

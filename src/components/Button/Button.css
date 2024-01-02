@@ -1,0 +1,42 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 20px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    color: #fff;
+    background-color: #313131;
+    transition: all 0.2s linear;
+}
+
+.button_green {
+    background-color: #3ddc84;
+    width: 76px;
+    color: #000;
+    border-radius: 3px;
+}
+
+.button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .button_disapear {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .button {
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+    }
+}

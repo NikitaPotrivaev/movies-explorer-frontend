@@ -1,0 +1,10 @@
+.logo {
+    display: flex;
+}
+
+.logo-img {
+    background-image: url(../../images/logo.svg);
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+}

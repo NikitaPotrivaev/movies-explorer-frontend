@@ -1,0 +1,43 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 30px;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav__button {
+  display: flex;
+  justify-content: center;
+  width: 96px;
+  height: 36px;
+  border-radius: 10px;
+  text-decoration: none;
+  align-items: center;
+  margin: auto;
+  border: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  background-color: #313131;
+  transition: all 0.2s linear;
+}
+
+.nav__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+      gap: 6px;
+  }
+
+  .nav__button {
+      width: 82px;
+      height: 26px;
+      font-size: 10px;
+  }
+}
