@@ -6,7 +6,7 @@ import { HeaderBurgerMenu } from '../HeaderBurgerMenu/HeaderBurgerMenu';
 import { useState, useEffect } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 
-export function Header() {
+export function Header({ isLoggedin }) {
     const [isMenuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
@@ -21,8 +21,6 @@ export function Header() {
     function closeMenu() {
         setMenuOpen(false)
     }
-
-    const isLoggedin = true;
 
     return (
         <header className="header">

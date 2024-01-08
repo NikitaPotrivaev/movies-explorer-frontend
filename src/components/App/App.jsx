@@ -1,6 +1,6 @@
 import './App.css'
 import { Main } from '../Main/Main';
-import { Movies } from '../Movies/Movies'
+import { Movies } from '../Movies/Movies';
 import { SavedMovies } from '../SavedMovies/SavedMovies';
 import { FormLogin } from '../FormLogin/FormLogin';
 import { FormRegister } from '../FormRegister/FormRegister';
@@ -9,9 +9,8 @@ import { Profile } from '../Profile/Profile';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { mainApi } from '../utils/MainApi';
-import { moviesApi } from '../utils/MoviesApi';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-
+import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute';
 
 export function App() {
     const [isLoggedin, setIsloggedin] = useState(false)
@@ -22,7 +21,7 @@ export function App() {
 
     useEffect(() => {
         if (isLoggedin) {
-        moviesApi.getUserInfo()
+        mainApi.getUserInfo()
           .then((userInfo) => {
             setCurrentUser(userInfo)
           })
@@ -40,7 +39,7 @@ export function App() {
              })
            .catch(err => console.log(`Ошибка при обработке токена, ${err}`))
          }
-       }, [])
+       }, [isLoggedin, navigate])
 
        useEffect(() => {
         const token = localStorage.getItem('token')
@@ -50,39 +49,98 @@ export function App() {
             }).catch(err => console.log(`Ошибка при удалении карточки, ${err}`))}
         }, [currentUser])
 
-        function handleRegister(password, email, name) {
-            mainApi.register(password, email, name)
+        function handleLogin(password, email) {
+            mainApi.login(password, email)
+              .then(res => {
+                  localStorage.setItem('token', res.token)
+                  setIsloggedin(true)
+                  navigate('/movies')
+              })
+              .catch(err => {console.log(`Ошибка при авторизации пользователя ${err}`)})
+        }
+
+        function handleRegister(name, email, password) {
+            mainApi.register(name, email, password)
               .then(() => {
-                navigate('/sign-in')
+                navigate('/signin')
             })
             .catch(err => {console.log(`Ошибка при регистрации пользователя ${err}`)
             })
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('token')
+        }
+
+        function handleUpdateUser(user) {
+            mainApi.updateUserInfo(user)
+              .then((res) => {
+                setCurrentUser(res)
+              })
+              .catch(err => console.log(`Ошибка при редактировании профиля, ${err}`))
+        }
+
+        function handleSaveMovie(movie) {
+            mainApi.addMovie(movie)
+                .then((newMovie) => {
+                    setSavedMovies([newMovie, ...savedMovies])
+                })
+                .catch(err => console.log(`Ошибка при сохранении фильма, ${err}`))
+        }
+
+        function handleMovieDelete(movie) {
+            mainApi.deleteMovie(movie._id)
+              .then(() => {setSavedMovies((element) => element.filter((item) => item._id !== movie._id))
+              })
+              .catch(err => console.log(`Ошибка при удалении карточки, ${err}`))
         }
 
     return (
         <CurrentUserContext.Provider value={ currentUser }>
         <div className="app">
             <Routes>
+            <Route path='*'
+                    element = {<NotFound />}
+                />
                 <Route path='/'
-                    element = {<Main/>}
+                    element = {<Main
+                        isloggedin = { isLoggedin }
+                    />}
                 />
                 <Route path='/movies'
-                    element = {<Movies/>}
+                    element = { <ProtectedRoute
+                        isloggedin = { isLoggedin }
+                        element = { Movies }
+                        onSave = { handleSaveMovie }
+                        onDelete={ handleMovieDelete }
+                        moviesCardList = { savedMovies } 
+                    /> }
                 />
                 <Route path='/saved-movies'
-                   element = {<SavedMovies />}
+                   element = { <ProtectedRoute
+                        isloggedin = { isLoggedin }
+                        element = { SavedMovies }
+                        onDelete = { handleMovieDelete }
+                        moviesCardList = { savedMovies }
+                    /> }
                 />
                 <Route path='/profile'
-                   element = {<Profile />}
+                   element = { <ProtectedRoute
+                        isloggedin = { isLoggedin }
+                        element = { Profile }
+                        onLogout = { handleLogout }
+                        onUpdateUser = { handleUpdateUser }
+                    /> }
                 />
                 <Route path="/signup"
-                   element = {<FormRegister />}
+                   element = {<FormRegister
+                        onRegister = { handleRegister }
+                />}
                 />
                 <Route path="/signin"
-                    element = {<FormLogin />}
-                />
-                <Route path='*'
-                    element = {<NotFound />}
+                    element = {<FormLogin 
+                        onLogin = { handleLogin }
+                />}
                 />
             </Routes>
         </div>

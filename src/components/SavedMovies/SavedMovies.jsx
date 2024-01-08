@@ -5,11 +5,10 @@ import { movies } from '../utils/movies';
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header';
 
-export function SavedMovies() {
-    const isLoggedin = true
+export function SavedMovies({ isLoggedin }) {
     return (
         <section className='movies'>
-            <Header isLoggedin={isLoggedin}/>
+            <Header isloggedin = { isLoggedin } />
             <SearchForm />
             <MoviesCardList 
                 movies={movies}

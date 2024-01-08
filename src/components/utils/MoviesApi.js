@@ -20,4 +20,4 @@ class MoviesApi {
     }
 }
 
-export const moviesApi = new MoviesApi({ baseUrl: 'https://api.nomoreparties.co/beatfilm-movies' });
+export const moviesApi = new MoviesApi({ baseUrl: 'http://localhost:3000' });

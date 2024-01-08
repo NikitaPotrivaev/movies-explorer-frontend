@@ -6,10 +6,10 @@ import { Student } from '../Student/Student';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
-export function Main() {
+export function Main({ isLoggedin }) {
     return (
         <>
-            <Header />
+            <Header isloggedin = { isLoggedin } />
             <main className='main'>
                 <Promo />
                 <AboutProject />

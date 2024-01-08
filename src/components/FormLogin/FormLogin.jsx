@@ -2,12 +2,13 @@ import './FormLogin.css'
 import { Form } from '../Form/Form';
 import { useFormValidation } from '../hooks/useFormValidation';
 
-export function FormLogin() {
+export function FormLogin({ onLogin }) {
 
     const { values, handleChange, errors, isValid } = useFormValidation()
 
     function handleSubmit(e) {
         e.preventDefault()
+        onLogin(values["email"], values["password"])
     }
 
     return(
@@ -24,7 +25,7 @@ export function FormLogin() {
             >
             <div className='input'>
                 <p className='input__info'>E-mail</p>
-                <input name='email' className='input__element' type='email' value={values.email || '' } onChange={ handleChange } minLength="2" maxLength="40" required />
+                <input name='email' className='input__element' type='email' onChange = { handleChange } value={values.email || '' } minLength="2" maxLength="40" required />
                     <span className='input__error input__error_active'>{errors.email || '' }</span>
             </div>
             <div className='input'>

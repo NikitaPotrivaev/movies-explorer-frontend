@@ -8,7 +8,7 @@ import { movies } from '../utils/movies';
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header';
 
-export function Movies() {
+export function Movies({ isLoggedin }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -19,7 +19,7 @@ export function Movies() {
 
     return (
         <section className='movies'>
-            <Header />
+            <Header isloggedin = { isLoggedin } />
             <SearchForm />
             {!isLoading ? (
                 <Preloader />

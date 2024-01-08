@@ -22,26 +22,26 @@ class MainApi {
         .then(this._checkRequest)
     }
 
-    register(password, email, name) {
+    register(name, email, password) {
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ password, email, name })
+            body: JSON.stringify({ name, email, password })
         })
         .then(this._checkRequest)
     }
 
-    login(password, email) {
+    login(email, password) {
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ password, email })
+            body: JSON.stringify({ email, password })
         })
         .then(this._checkRequest)
         .then((data) => {
@@ -106,4 +106,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi({ baseUrl: 'https://api.kolschik.nomoredomainsmonster.ru' });
+export const mainApi = new MainApi({ baseUrl: 'http://localhost:3000' });
