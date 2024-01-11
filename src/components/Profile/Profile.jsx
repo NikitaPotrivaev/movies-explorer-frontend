@@ -2,39 +2,51 @@ import './Profile.css';
 import { Link } from 'react-router-dom';
 import { Header } from '../Header/Header'
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { useFormValidation } from '../hooks/useFormValidation';
+import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
-export function Profile({ isloggedin, onUpdateUser, onLogout }) {
+export function Profile({ onUpdateUser, isLoggedin, onLogout, isOpen, onClose, status }) {
     const currentUser = useContext(CurrentUserContext)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const { values, setValues, handleChange, errors, isValid } = useFormValidation()
 
     useEffect(() => {
-        setName(currentUser.name)
-        setEmail(currentUser.email)
-    }, [currentUser])
+        setValues({
+          name: currentUser.name,
+          email: currentUser.email,
+        });
+      }, [currentUser.name, currentUser.email, setValues]);
 
-    function handleSubmitProfileForm(e) {
+    function handleSubmit(e) {
         e.preventDefault()
-        onUpdateUser(name, email)
+        onUpdateUser(values)
     }
 
     return (
         <>
-            <Header isloggedin={isloggedin} />
+            <Header isLoggedin={isLoggedin}/>
             <section className='profile'>
-                <h3 className='profile__title'>Привет, Никитос!</h3>
-                <form className='profile__form' onSubmit={handleSubmitProfileForm}>
+                <h3 className='profile__title'>{`Привет, ${currentUser.name}!`}</h3>
+                <form className='profile__form' onSubmit={handleSubmit}>
                     <label className='profile__input-container'>Имя
-                        <input className='profile__input-element' name='name' type='text' defaultValue='Никитос' required></input>
+                        <input name='name' className='profile__input-element' placeholder='Имя' type='text' value={values.name || '' } onChange = { handleChange } minLength="2" maxLength="40" required ></input>
                     </label>
+                        <span className='profile__input-element-error profile__input-element-error_active'>{errors.name || '' }</span>
                     <label className='profile__input-container'>Email
-                        <input className='profile__input-element' name='email' type='text' defaultValue='nikitos@mail.ru' placeholder='E-mail' required></input>
+                        <input name='email' className='profile__input-element' placeholder='E-mail' type='email' value={values.email || '' } onChange = { handleChange } minLength="2" maxLength="40" required ></input>
                     </label>
-                    <button className='profile__button' type='submit'>Редактировать</button>
+                        <span className='profile__input-element-error profile__input-element-error_active'>{errors.email || '' }</span>
+                    <button className={isValid ? 'profile__button' : 'profile__button-inactive'} disabled={!isValid || ''} type='submit'>Редактировать</button>
                 </form>
                 <Link className='profile__exit' to='/' onClick={onLogout}>Выйти из аккаунта</Link>
             </section>
+            <InfoTooltip 
+                successfulText = 'Данные успешно обновлены'
+                errorText = 'Имя или Email введены некорректно'
+                isOpen = { isOpen }
+                onClose = { onClose }
+                status = { status }
+            />
         </>
     )
 }

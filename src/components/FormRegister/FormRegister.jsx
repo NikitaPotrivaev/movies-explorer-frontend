@@ -1,8 +1,9 @@
 import '../FormLogin/FormLogin.css'
 import { Form } from '../Form/Form';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
-export function FormRegister({ onRegister }) {
+export function FormRegister({ onRegister, isOpen, onClose, status }) {
 
     const { values, handleChange, errors, isValid } = useFormValidation()
 
@@ -21,7 +22,7 @@ export function FormRegister({ onRegister }) {
                 text='Зарегистрироваться'
                 linkCaption='Ещё не зарегистрированы?'
                 linkText='Войти'
-                path="/signin"
+                path='/signin'
             >
             <div className='input'>
                 <p className='input__info'>Имя</p>
@@ -39,6 +40,13 @@ export function FormRegister({ onRegister }) {
                     <span className='input__error input__error_active'>{errors.password || '' }</span>
             </div>
             </Form>
+        <InfoTooltip 
+            successfulText = 'Вы успешно зарегистрировались.'
+            errorText = 'Что-то пошло не так, попробуйте ещё раз.'
+            isOpen = { isOpen }
+            onClose = { onClose }
+            status = { status }
+        />
         </>
     )
 }

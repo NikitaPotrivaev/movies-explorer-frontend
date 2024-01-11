@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import './Form.css';
 import { Logo } from "../Logo/Logo";
 
-export function Form({children, title, text, linkCaption, linkText, path, onSubmit, isDisabled, isValid}) {
+export function Form({children, title, text, linkCaption, linkText, path, onSubmit, isDisabled, isValid }) {
 
     return (
         <section className="form">

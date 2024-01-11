@@ -1,0 +1,95 @@
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s linear;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.popup_opened {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup__container {
+    background-color: #FFFFFF;
+    margin: 0;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    max-width: 430px;
+    border-radius: 10px;
+    position: relative;
+    padding: 34px 36px 35px 36px;
+}
+
+.popup__close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    height: 32px;
+    width: 32px;
+    background-image: url(../../images/Group.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: 0;
+    transition: all 0.2s linear;
+  }
+
+  .popup__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  .auth__status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.auth__icon {
+    margin: 26px 0 32px;
+    max-width: 120px;
+    max-height: 120px;
+}
+
+.auth__text {
+    margin: 0 0 25px 0;
+    padding: 0;
+    color: #000;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+    .popup__container {
+        padding: 25px 22px 8px 22px;
+        max-width: 282px;
+    }
+
+    .popup__close {
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
+        right: 0;
+        top: -35px;
+    }
+
+    .auth__text {
+        font-size: 20px;
+    }
+}

@@ -6,10 +6,10 @@ import { Student } from '../Student/Student';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
-export function Main({ isLoggedin }) {
+export function Main(props) {
     return (
         <>
-            <Header isloggedin = { isLoggedin } />
+            <Header isLoggedin={props.isLoggedin} />
             <main className='main'>
                 <Promo />
                 <AboutProject />

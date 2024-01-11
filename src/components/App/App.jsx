@@ -1,45 +1,36 @@
 import './App.css'
 import { Main } from '../Main/Main';
-import { Movies } from '../Movies/Movies';
+import { Movies } from '../Movies/Movies'
 import { SavedMovies } from '../SavedMovies/SavedMovies';
 import { FormLogin } from '../FormLogin/FormLogin';
 import { FormRegister } from '../FormRegister/FormRegister';
 import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
-import { useNavigate, Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { mainApi } from '../utils/MainApi';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 export function App() {
-    const [isLoggedin, setIsloggedin] = useState(false)
+    const [isLoggedin, setIsloggedin] = useState(localStorage.getItem('isLoggedin') || false)
     const [currentUser, setCurrentUser] = useState({})
     const [savedMovies, setSavedMovies] = useState([])
+    const [status, setStatus] = useState(false)
+    const [tooltip, setTooltip] = useState(false)
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isLoggedin) {
-        mainApi.getUserInfo()
-          .then((userInfo) => {
-            setCurrentUser(userInfo)
-          })
-          .catch(err => console.log(`Сервер не нашёл данные, ${err}`))
-        }
-      }, [isLoggedin])
-
-      useEffect(() => {
         const token = localStorage.getItem('token')
          if(token) {
            mainApi.checkToken(token)
-            .then(() => {   
-                 setIsloggedin(true)
-                 navigate('/')
+            .then(() => {
+                setIsloggedin(true)
              })
            .catch(err => console.log(`Ошибка при обработке токена, ${err}`))
          }
-       }, [isLoggedin, navigate])
+       }, [isLoggedin])
 
        useEffect(() => {
         const token = localStorage.getItem('token')
@@ -49,35 +40,61 @@ export function App() {
             }).catch(err => console.log(`Ошибка при удалении карточки, ${err}`))}
         }, [currentUser])
 
-        function handleLogin(password, email) {
-            mainApi.login(password, email)
+        useEffect(() => {
+            if (isLoggedin) {
+            Promise.all([ mainApi.getUserInfo() ])
+                .then(([userInfo]) => {
+                    setCurrentUser(userInfo)
+                })
+                .catch(err => console.log(`Сервер не нашёл данные, ${err}`))
+            }
+        }, [isLoggedin])
+
+        function closePopup() {
+            setTooltip(false)
+        }
+
+        function handleLogin(email, password) {
+            mainApi.login(email, password)
               .then(res => {
-                  localStorage.setItem('token', res.token)
-                  setIsloggedin(true)
-                  navigate('/movies')
+                    localStorage.setItem('token', res.token)
+                    setIsloggedin(true)
+                    navigate('/movies')                 
               })
-              .catch(err => {console.log(`Ошибка при авторизации пользователя ${err}`)})
+              .catch(err => {console.log(`Ошибка при авторизации пользователя ${err}`)
+                setTooltip(true)
+                setStatus(false)           
+            })
         }
 
         function handleRegister(name, email, password) {
             mainApi.register(name, email, password)
               .then(() => {
-                navigate('/signin')
+                setTooltip(true)
+                setStatus(true)
             })
             .catch(err => {console.log(`Ошибка при регистрации пользователя ${err}`)
+                setTooltip(true)
+                setStatus(false)            
             })
         }
 
         function handleLogout() {
             localStorage.removeItem('token')
+            setIsloggedin(false)
         }
 
         function handleUpdateUser(user) {
-            mainApi.updateUserInfo(user)
+            mainApi.updateUserInfo(user.name, user.email)
               .then((res) => {
                 setCurrentUser(res)
+                setTooltip(true)
+                setStatus(true)   
               })
-              .catch(err => console.log(`Ошибка при редактировании профиля, ${err}`))
+            .catch(err => {console.log(`Ошибка при регистрации пользователя ${err}`)
+              setTooltip(true)
+              setStatus(false)            
+          })
         }
 
         function handleSaveMovie(movie) {
@@ -96,51 +113,60 @@ export function App() {
         }
 
     return (
-        <CurrentUserContext.Provider value={ currentUser }>
+        <CurrentUserContext.Provider value = { currentUser }>
         <div className="app">
             <Routes>
-            <Route path='*'
-                    element = {<NotFound />}
-                />
                 <Route path='/'
                     element = {<Main
-                        isloggedin = { isLoggedin }
+                        isLoggedin = { isLoggedin } 
                     />}
                 />
                 <Route path='/movies'
                     element = { <ProtectedRoute
-                        isloggedin = { isLoggedin }
+                        isLoggedin = { isLoggedin }
                         element = { Movies }
                         onSave = { handleSaveMovie }
                         onDelete={ handleMovieDelete }
-                        moviesCardList = { savedMovies } 
+                        moviesCardList = { savedMovies }
                     /> }
                 />
                 <Route path='/saved-movies'
-                   element = { <ProtectedRoute
-                        isloggedin = { isLoggedin }
+                    element = { <ProtectedRoute
                         element = { SavedMovies }
+                        isLoggedin = { isLoggedin }
                         onDelete = { handleMovieDelete }
                         moviesCardList = { savedMovies }
                     /> }
                 />
                 <Route path='/profile'
-                   element = { <ProtectedRoute
-                        isloggedin = { isLoggedin }
+                    element = { <ProtectedRoute 
                         element = { Profile }
+                        isLoggedin = { isLoggedin }
                         onLogout = { handleLogout }
                         onUpdateUser = { handleUpdateUser }
+                        isOpen = { tooltip }
+                        onClose = { closePopup }
+                        status = { status }
                     /> }
                 />
                 <Route path="/signup"
                    element = {<FormRegister
                         onRegister = { handleRegister }
+                        isOpen = { tooltip }
+                        onClose = { closePopup }
+                        status = { status }
                 />}
                 />
                 <Route path="/signin"
                     element = {<FormLogin 
                         onLogin = { handleLogin }
+                        isOpen = { tooltip }
+                        onClose = { closePopup }
+                        status = { status }
                 />}
+                />
+                <Route path='*'
+                    element = {<NotFound />}
                 />
             </Routes>
         </div>

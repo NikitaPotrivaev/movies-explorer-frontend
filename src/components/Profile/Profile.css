@@ -23,12 +23,12 @@
 .profile__input-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
     font-size: 11px;
     font-weight: 500;
     line-height: 1.2;
     width: 100%;
-    padding-bottom: 16px;
-    margin-bottom: 17px;
     border-bottom: solid 1px #424242;
 }
 
@@ -50,6 +50,23 @@
     outline: none;
 }
 
+.profile__input-element-error {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    min-height: 17px;
+    color: #ee3465;
+    display: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.profile__input-element-error_active {
+    display: flex;
+}
+
 .profile__button {
     font-size: 13px;
     font-weight: 400;
@@ -60,6 +77,21 @@
     border: none;
     background-color: transparent;
     transition: all .2s linear;
+}
+
+.profile__button-inactive {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #5c5c5c;
+    padding: 0;
+    margin-top: 220px;
+    border: none;
+    background-color: transparent;
+}
+
+.profile__button-inactive:hover {
+    cursor: not-allowed;
 }
 
 .profile__button:hover {

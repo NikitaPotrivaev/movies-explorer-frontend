@@ -1,8 +1,9 @@
 import './FormLogin.css'
 import { Form } from '../Form/Form';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
-export function FormLogin({ onLogin }) {
+export function FormLogin({ onLogin, isOpen, onClose, status }) {
 
     const { values, handleChange, errors, isValid } = useFormValidation()
 
@@ -34,6 +35,12 @@ export function FormLogin({ onLogin }) {
                     <span className='input__error input__error_active'>{errors.password || '' }</span>
             </div>
             </Form>
+            <InfoTooltip 
+                errorText = 'Неправильные почта или пароль.'
+                isOpen = { isOpen }
+                onClose = { onClose }
+                status = { status }
+            />
         </>
     )
 }
