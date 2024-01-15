@@ -41,8 +41,8 @@
     object-fit: cover;
     object-position: center;
     cursor: pointer;
-    max-width: 360px;
-    max-height: 201px;
+    width: 360px;
+    height: 201px;
     border-radius: 6px;
 }
 
@@ -79,8 +79,8 @@
 @media screen and (max-width: 846px) {
 
     .movies-card__img {
-        max-width: 339px;
-        max-height: 190px;
+        width: 339px;
+        height: 190px;
     }
 
     .movies-card__info {
@@ -94,8 +94,8 @@
     }
 
     .movies-card__img {
-        max-width: 300px;
-        max-height: 168px;
+        width: 300px;
+        height: 168px;
     }
 
     .movies-card__title {

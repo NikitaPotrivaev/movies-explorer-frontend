@@ -1,7 +1,6 @@
 import './FormLogin.css'
 import { Form } from '../Form/Form';
 import { useFormValidation } from '../hooks/useFormValidation';
-import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
 export function FormLogin({ onLogin, isOpen, onClose, status }) {
 
@@ -22,6 +21,10 @@ export function FormLogin({ onLogin, isOpen, onClose, status }) {
                 text='Войти'
                 linkCaption='Ещё не зарегистрированы?'
                 linkText='Регистрация'
+                errorText = 'Неправильные почта или пароль.'
+                isOpen = { isOpen }
+                onClose = { onClose }
+                status = { status }
                 path="/signup"
             >
             <div className='input'>
@@ -35,12 +38,6 @@ export function FormLogin({ onLogin, isOpen, onClose, status }) {
                     <span className='input__error input__error_active'>{errors.password || '' }</span>
             </div>
             </Form>
-            <InfoTooltip 
-                errorText = 'Неправильные почта или пароль.'
-                isOpen = { isOpen }
-                onClose = { onClose }
-                status = { status }
-            />
         </>
     )
 }
