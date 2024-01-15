@@ -23,21 +23,21 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
     const [searchMessage, setSearchMessage] = useState('')
     const [isError, setError] = useState(false)
 
-    const window = document.documentElement.clientWidth
+    const resize = document.documentElement.clientWidth
     const cardsURL = 'https://api.nomoreparties.co/';
 
     useEffect (() => {
-        if (window > 768) {
+        if (resize > 768) {
             setCount(12)
             setPlus(3)
-        } else if (window <= 768 && window >= 500) {
+        } else if (resize <= 768 && resize >= 500) {
             setCount(8)
             setPlus(2)
-        } else if (window < 500) {
+        } else if (resize < 500) {
             setCount(5)
             setPlus(2)
         }
-    }, [window])
+    }, [resize])
 
     function moreMoviesLoad() {
         setLoadMovies((load) =>
@@ -63,9 +63,9 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         return movies.filter((element) => element.duration < 40)
     }
 
-    function searchMovies(films, keyWord, checkbox) {
-        const query = Array.isArray(films) ? films.filter((element) => {
-            return (element.nameRU.toLowerCase().includes(keyWord.toLowerCase()) > -1)
+    function searchMovies(movies, keyWord, checkbox) {
+        const query = Array.isArray(movies) ? movies.filter((element) => {
+            return (element.nameRU.toLowerCase().indexOf(keyWord.toLowerCase()) > -1)
         }) : []
         if(checkbox) {
             return shortMovies(query)
@@ -80,12 +80,10 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         setIsLoadingComplited(true)
     }
 
-    function changeMovies(movies) {
+    function showMovies(movies) {
         movies.forEach((movie) => {
-        if (movie.image) {
             movie.thumbnail = `${cardsURL}${movie.image.formats.thumbnail.url}`
             movie.image = `${cardsURL}${movie.image.url}`
-        }
         })
     }
 
@@ -98,7 +96,7 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         if (!originalMovies.length) {
             setIsLoading(true)
             moviesApi.getMovies().then((moviesData) => {
-                changeMovies(moviesData)
+                showMovies(moviesData)
                 setOriginalMovies(moviesData)
                 searchAndfilterMovies(moviesData, keyWord, checkBox)
             }).catch(() => {
@@ -142,17 +140,12 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         }
     }, [foundMovies, loadMovies])
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(!isLoading), 4000)
-        return () => clearTimeout(timer)
-    }, [])
-
     return (
         <section className="movies">
             <Header isLoggedin={isLoggedin} />
-            <SearchForm onSearchMovies={handleSearchMovies} />
+            <SearchForm onSearch={handleSearchMovies} />
             {isLoading ? (
-                <Preloader />
+                <Preloader /> 
             ) : isLoadingComplited ? (
                 loadMovies && foundMovies.length > 0 ? (
                     <MoviesCardList

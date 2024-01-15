@@ -3,7 +3,7 @@ import searchImg from '../../images/find-3.svg';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { useEffect, useState } from 'react';
 
-export function SearchForm({ onSearchMovies, savedRoute }) {
+export function SearchForm({ onSearch, savedRoute }) {
 
     const [keyWord, setKeyWord] = useState('')
     const [checkBox, setCheckBox] = useState(false)
@@ -37,7 +37,7 @@ export function SearchForm({ onSearchMovies, savedRoute }) {
           setError(true)
         } else {
           setError(false)
-          onSearchMovies(keyWord, checkBox)
+          onSearch(keyWord, checkBox)
         }
     }
 
@@ -48,15 +48,15 @@ export function SearchForm({ onSearchMovies, savedRoute }) {
 
     function handleCheckBoxChange(e) {
         setCheckBox(e.target.checked)
-        onSearchMovies(keyWord, e.target.checked)
+        onSearch(keyWord, e.target.checked)
     }
 
     return (
             <div className='search'>
-                <form className='search__form' onSubmit={handleSubmit}>
+                <form className='search__form' onSubmit={handleSubmit} noValidate>
                     <div className='search__form-content'>
-                        <input className='search__form-input' type='text' placeholder='Фильм' onChange={handleSearchInputChange} value={keyWord || ''} required/>
-                        <span className="search__form-error">{error ? ' Нужно ввести ключевое слово.' : ''}</span>
+                        <input className='search__form-input' type='text' placeholder='Фильм' onChange={handleSearchInputChange} value={keyWord || ''} />
+                        <span className='search__form-error'>{error ? 'Введите название фильма' : ''}</span>
                     </div>
                     <button className='search__form-button' type='submit'>
                         <img src={searchImg} className='search__img' alt='Кнопка поиска'/>

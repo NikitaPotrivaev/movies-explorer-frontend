@@ -79,7 +79,7 @@ export function App() {
     }
 
     function handleLogout() {
-        localStorage.removeItem('token')
+        localStorage.clear()
         setIsloggedin(false)
     }
 
