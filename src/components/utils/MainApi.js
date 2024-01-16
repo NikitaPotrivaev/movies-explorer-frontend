@@ -82,14 +82,37 @@ class MainApi {
         .then(this._checkRequest)
     }
 
-    addMovie(movieInfo) {
+    addMovie({
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        id}) {
         return fetch(`${this._baseUrl}/movies`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${ localStorage.getItem('token') }`
             },
-            body: JSON.stringify({ movieInfo })
+            body: JSON.stringify({
+                country,
+                director,
+                duration,
+                year,
+                description,
+                image,
+                trailerLink,
+                nameRU,
+                nameEN,
+                thumbnail,
+                movieId: id,
+            })
         })
         .then(this._checkRequest)
     }
@@ -106,4 +129,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi({ baseUrl: 'http://localhost:3000' });
+export const mainApi = new MainApi({ baseUrl: 'https://api.kolschik.nomoredomainsmonster.ru' });

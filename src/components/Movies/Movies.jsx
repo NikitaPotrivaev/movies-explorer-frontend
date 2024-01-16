@@ -7,6 +7,7 @@ import { Preloader } from '../Preloader/Preloader';
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header';
 import { moviesApi } from '../utils/MoviesApi';
+import { moviesURL } from '../utils/constants';
 
 export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
 
@@ -24,7 +25,6 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
     const [isError, setError] = useState(false)
 
     const resize = document.documentElement.clientWidth
-    const cardsURL = 'https://api.nomoreparties.co/';
 
     useEffect (() => {
         if (resize > 768) {
@@ -63,57 +63,6 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         return movies.filter((element) => element.duration < 40)
     }
 
-    function searchMovies(movies, keyWord, checkbox) {
-        const query = Array.isArray(movies) ? movies.filter((element) => {
-            return (element.nameRU.toLowerCase().indexOf(keyWord.toLowerCase()) > -1)
-        }) : []
-        if(checkbox) {
-            return shortMovies(query)
-        }
-        return query
-    }
-
-    function searchAndfilterMovies(films, kyeWord, checkBox) {
-        const moviesList = searchMovies(films, kyeWord, checkBox)
-        setFoundMovies(moviesList)
-        localStorage.setItem('movies', JSON.stringify(moviesList))
-        setIsLoadingComplited(true)
-    }
-
-    function showMovies(movies) {
-        movies.forEach((movie) => {
-            movie.thumbnail = `${cardsURL}${movie.image.formats.thumbnail.url}`
-            movie.image = `${cardsURL}${movie.image.url}`
-        })
-    }
-
-    function handleSearchMovies(keyWord, checkBox) {
-        setLoadMovies([])
-        setKeyWord(keyWord)
-        setCheckBox(checkBox)
-        localStorage.setItem('keyWord', keyWord)
-        localStorage.setItem('checkBox', checkBox)
-        if (!originalMovies.length) {
-            setIsLoading(true)
-            moviesApi.getMovies().then((moviesData) => {
-                showMovies(moviesData)
-                setOriginalMovies(moviesData)
-                searchAndfilterMovies(moviesData, keyWord, checkBox)
-            }).catch(() => {
-                setError(true)
-                setSearchMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.')
-                localStorage.removeItem('movies')
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
-        } else {
-            searchAndfilterMovies(originalMovies, keyWord, checkBox)
-            setIsLoading(false)
-            setError(false)
-        }
-    }
-
     useEffect(() => {
         const array = JSON.parse(localStorage.getItem('movies'))
         setLoadMovies(array)
@@ -139,6 +88,57 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
             }
         }
     }, [foundMovies, loadMovies])
+
+    function searchMovies(movies, keyWord, checkbox) {
+        const query = Array.isArray(movies) ? movies.filter((element) => {
+            return (element.nameRU.toLowerCase().indexOf(keyWord.toLowerCase()) > -1)
+        }) : []
+        if(checkbox) {
+            return shortMovies(query)
+        }
+        return query
+    }
+
+    function searchAndfilterMovies(films, kyeWord, checkBox) {
+        const moviesList = searchMovies(films, kyeWord, checkBox)
+        setFoundMovies(moviesList)
+        localStorage.setItem('movies', JSON.stringify(moviesList))
+        setIsLoadingComplited(true)
+    }
+
+    function showMovies(movies) {
+        movies.forEach((movie) => {
+            movie.thumbnail = `${moviesURL}${movie.image.formats.thumbnail.url}`
+            movie.image = `${moviesURL}${movie.image.url}`
+        })
+    }
+
+    function handleSearchMovies(keyWord, checkBox) {
+        setLoadMovies([])
+        setKeyWord(keyWord)
+        setCheckBox(checkBox)
+        localStorage.setItem('keyWord', keyWord)
+        localStorage.setItem('checkBox', checkBox)
+        if (!originalMovies.length) {
+            setIsLoading(true)
+            moviesApi.getMovies().then((moviesData) => {
+                showMovies(moviesData)
+                setOriginalMovies(moviesData)
+                searchAndfilterMovies(moviesData, keyWord, checkBox)
+            }).catch(() => {
+                setError(true)
+                setSearchMessage('Во время запроса произошла ошибка.')
+                localStorage.removeItem('movies')
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+        } else {
+            searchAndfilterMovies(originalMovies, keyWord, checkBox)
+            setIsLoading(false)
+            setError(false)
+        }
+    }
 
     return (
         <section className="movies">

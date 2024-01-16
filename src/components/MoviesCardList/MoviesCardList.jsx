@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
 import { MoviesCard } from '../MoviesCard/MoviesCard';
 
-export function MoviesCardList({   movies, moviesCardList, onSave, onDelete, isSaved }) {
+export function MoviesCardList({   movies, moviesCardList, onSave, onDelete }) {
     return (
         <div className='movies__container'>
             <ul className='movies__list'>
@@ -12,7 +12,6 @@ export function MoviesCardList({   movies, moviesCardList, onSave, onDelete, isS
                         moviesCardList={moviesCardList}
                         onSave={onSave}
                         onDelete={onDelete}
-                        isSaved={isSaved}
                     />
                 ))}
             </ul>

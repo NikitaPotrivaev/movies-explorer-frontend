@@ -96,8 +96,8 @@ export function App() {
         })
     }
 
-    function handleSaveMovie(movie) {
-        mainApi.addMovie(movie)
+    function handleSaveMovie(movieInfo) {
+        mainApi.addMovie(movieInfo)
             .then((newMovie) => {
                 setSavedMovies([newMovie, ...savedMovies])
             })

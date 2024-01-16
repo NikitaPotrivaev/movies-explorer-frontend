@@ -90,10 +90,6 @@
     background-color: transparent;
 }
 
-.profile__button-inactive:hover {
-    cursor: not-allowed;
-}
-
 .profile__button:hover {
     cursor: pointer;
     opacity: 0.8;
