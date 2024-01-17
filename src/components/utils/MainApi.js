@@ -129,4 +129,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi({ baseUrl: 'https://api.kolschik.nomoredomainsmonster.ru' });
+export const mainApi = new MainApi({ baseUrl: 'https://api.puppet.nomoredomainsmonster.ru' });

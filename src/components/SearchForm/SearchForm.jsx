@@ -19,18 +19,6 @@ export function SearchForm({ onSearch, savedRoute }) {
         }
     }, [savedRoute])
 
-    useEffect(() => {
-        if (!savedRoute) {
-          const status = localStorage.getItem('checkBox')
-    
-          if (JSON.parse(status) === true) {
-            setCheckBox(true)
-          } else {
-            setCheckBox(false)
-          }
-        }
-    }, [savedRoute])
-
     function handleSubmit(e) {
         e.preventDefault()
         if (!keyWord) {
@@ -48,8 +36,20 @@ export function SearchForm({ onSearch, savedRoute }) {
 
     function handleCheckBoxChange(e) {
         setCheckBox(e.target.checked)
-        onSearch(keyWord, e.target.checked)
-    }
+        onSearch(keyWord, e.target.checked)        
+  }
+
+    useEffect(() => {
+        if (!savedRoute) {
+          const status = localStorage.getItem('checkBox')
+    
+          if (JSON.parse(status) === true) {
+            setCheckBox(true)
+          } else {
+            setCheckBox(false)
+          }
+        }
+    }, [savedRoute])
 
     return (
             <div className='search'>

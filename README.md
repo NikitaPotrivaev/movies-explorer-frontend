@@ -10,9 +10,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.136.65
-
-Frontend https://kolschik.nomoredomainsmonster.ru
+Frontend https://puppet.nomoredomainsmonster.ru
 
 [Ссылка на Pull request](https://github.com/NikitaPotrivaev/movies-explorer-frontend/pull/2)
 

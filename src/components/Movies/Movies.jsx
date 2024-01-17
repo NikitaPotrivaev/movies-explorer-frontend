@@ -125,10 +125,11 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
                 showMovies(moviesData)
                 setOriginalMovies(moviesData)
                 searchAndfilterMovies(moviesData, keyWord, checkBox)
-            }).catch(() => {
+            }).catch((error) => {
                 setError(true)
-                setSearchMessage('Во время запроса произошла ошибка.')
+                setSearchMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
                 localStorage.removeItem('movies')
+                console.log(error)
             })
             .finally(() => {
                 setIsLoading(false)
