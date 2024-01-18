@@ -1,7 +1,7 @@
 import './More.css'
 
-export function More({ more }) {
+export function More({ isLoad }) {
     return (
-            <button className='more' onClick = {more}>Ещё</button>
+            <button className='more' onClick = {isLoad}>Ещё</button>
     )
 }

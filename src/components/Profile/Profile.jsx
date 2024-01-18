@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '../Header/Header'
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useContext, useEffect, useState } from 'react';
-import { useFormValidation } from '../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
 export function Profile({ onUpdateUser, isLoggedin, onLogout, isOpen, onClose, status }) {
@@ -40,7 +40,7 @@ export function Profile({ onUpdateUser, isLoggedin, onLogout, isOpen, onClose, s
                     </label>
                         <span className='profile__input-element-error profile__input-element-error_active'>{errors.name || '' }</span>
                     <label className='profile__input-container'>Email
-                        <input name='email' className='profile__input-element' placeholder='E-mail' type='email' value={values.email || '' } onChange = { handleChange } minLength="2" maxLength="40" required ></input>
+                        <input name='email' pattern="^\w+@\w+\.\w{2,}(\.\w{2,})*$" className='profile__input-element' placeholder='E-mail' type='email' value={values.email || '' } onChange = { handleChange } minLength="2" maxLength="40" required ></input>
                     </label>
                         <span className='profile__input-element-error profile__input-element-error_active'>{errors.email || '' }</span>
                     <button className= {`profile__button ${!isDataChanged || !isValid ? 'profile__button-inactive' : ''}`} disabled={ !isValid || !isDataChanged } type='submit'>Редактировать</button>

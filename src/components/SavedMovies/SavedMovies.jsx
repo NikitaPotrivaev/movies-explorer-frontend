@@ -4,6 +4,7 @@ import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header';
 import { useEffect, useState } from 'react';
+import { searchMovies } from '../../utils/constants';
 
 export function SavedMovies({ isLoggedin, moviesCardList, onDelete }) {
 
@@ -11,20 +12,6 @@ export function SavedMovies({ isLoggedin, moviesCardList, onDelete }) {
     const [isLoadingComplited, setIsLoadingComplited] = useState(false)
     const [keyWord, setKeyWord] = useState('')
     const [checkBox, setCheckBox] = useState(false)
-
-    function searchMovies(movies, keyWord, checkbox) {
-        const query = Array.isArray(movies) ? movies.filter((element) => {
-            return (element.nameRU.toLowerCase().indexOf(keyWord.toLowerCase()) > -1)
-        }) : []
-        if(checkbox) {
-            return shortMovies(query)
-        }
-        return query
-    }
-
-    function shortMovies(movies) {
-        return movies.filter((element) => element.duration < 40)
-    }
 
     function handleSearchMovies(keyWord, checkBox) {
         setKeyWord(keyWord)

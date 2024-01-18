@@ -1,6 +1,6 @@
 import '../FormLogin/FormLogin.css'
 import { Form } from '../Form/Form';
-import { useFormValidation } from '../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 
 export function FormRegister({ onRegister, isOpen, onClose, status }) {
 
@@ -34,7 +34,7 @@ export function FormRegister({ onRegister, isOpen, onClose, status }) {
             </div>
             <div className='input'>
                 <p className='input__info'>E-mail</p>
-                <input name='email' className='input__element' type='email' value={values.email || '' } onChange = { handleChange } minLength="2" maxLength="40" required />
+                <input name='email' pattern="^\w+@\w+\.\w{2,}(\.\w{2,})*$" className='input__element' type='email' value={values.email || '' } onChange = { handleChange } minLength="2" maxLength="40" required />
                     <span className='input__error input__error_active'>{errors.email || '' }</span>
             </div>
             <div className='input'>

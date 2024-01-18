@@ -6,8 +6,8 @@ import { FormLogin } from '../FormLogin/FormLogin';
 import { FormRegister } from '../FormRegister/FormRegister';
 import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
-import { mainApi } from '../utils/MainApi';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { mainApi } from '../../utils/MainApi';
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
@@ -32,7 +32,7 @@ export function App() {
              })
            .catch(err => console.log(`Ошибка при обработке токена, ${err}`))
          }
-       }, [isLoggedin])
+       }, [])
 
     useEffect(() => {
         if (isLoggedin) {
@@ -149,20 +149,26 @@ export function App() {
                     /> }
                 />
                 <Route path="/signup"
-                   element = {<FormRegister
+                    element={ isLoggedin ? (
+                        <Navigate to='/'/>
+                    ) : (
+                    <FormRegister
                         onRegister = { handleRegister }
                         isOpen = { tooltip }
                         onClose = { closePopup }
                         status = { status }
-                />}
+                />)}
                 />
                 <Route path="/signin"
-                    element = {<FormLogin 
+                    element={ isLoggedin ? (
+                        <Navigate to='/'/>
+                    ) : (
+                    <FormLogin
                         onLogin = { handleLogin }
                         isOpen = { tooltip }
                         onClose = { closePopup }
                         status = { status }
-                />}
+                />)}
                 />
                 <Route path='*'
                     element = {<NotFound />}

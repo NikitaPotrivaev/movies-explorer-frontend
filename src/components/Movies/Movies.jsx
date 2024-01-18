@@ -6,8 +6,17 @@ import { More } from '../More/More';
 import { Preloader } from '../Preloader/Preloader';
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header';
-import { moviesApi } from '../utils/MoviesApi';
-import { moviesURL } from '../utils/constants';
+import { moviesApi } from '../../utils/MoviesApi';
+import { handleShortMovies, showMovies, searchMovies } from '../../utils/constants'
+import { 
+    DISPLAY_MEDIUM, 
+    DISPLAY_MOBILE, 
+    DESCTOP_COUNT, 
+    DESCTOP_QUONTITY, 
+    MEDIUM_COUNT, 
+    MOBILE_COUNT, 
+    MEDIUM_MOBILE_QUONTITY, 
+} from '../../utils/moviesConstants'
 
 export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
 
@@ -27,19 +36,19 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
     const resize = document.documentElement.clientWidth
 
     useEffect (() => {
-        if (resize > 768) {
-            setCount(12)
-            setPlus(3)
-        } else if (resize <= 768 && resize >= 500) {
-            setCount(8)
+        if (resize > DISPLAY_MEDIUM) {
+            setCount(DESCTOP_COUNT)
+            setPlus(DESCTOP_QUONTITY)
+        } else if (resize <= DISPLAY_MEDIUM && resize >= DISPLAY_MOBILE) {
+            setCount(MEDIUM_COUNT)
             setPlus(2)
-        } else if (resize < 500) {
-            setCount(5)
-            setPlus(2)
+        } else if (resize < DISPLAY_MOBILE) {
+            setCount(MOBILE_COUNT)
+            setPlus(MEDIUM_MOBILE_QUONTITY)
         }
     }, [resize])
 
-    function moreMoviesLoad() {
+    function loadMoreMovies() {
         setLoadMovies((load) =>
             foundMovies.slice(0, load.length + plus)
         )
@@ -59,16 +68,12 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         }
     }, [count, foundMovies])
 
-    function shortMovies(movies) {
-        return movies.filter((element) => element.duration < 40)
-    }
-
     useEffect(() => {
         const array = JSON.parse(localStorage.getItem('movies'))
         setLoadMovies(array)
         if (array && !keyWord) {
             setCheckBox(checkBox)
-            setFoundMovies(checkBox ? shortMovies(array) : array)
+            setFoundMovies(checkBox ? handleShortMovies(array) : array)
         }
     }, [checkBox, keyWord])
 
@@ -89,28 +94,11 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
         }
     }, [foundMovies, loadMovies])
 
-    function searchMovies(movies, keyWord, checkbox) {
-        const query = Array.isArray(movies) ? movies.filter((element) => {
-            return (element.nameRU.toLowerCase().indexOf(keyWord.toLowerCase()) > -1)
-        }) : []
-        if(checkbox) {
-            return shortMovies(query)
-        }
-        return query
-    }
-
     function searchAndfilterMovies(films, kyeWord, checkBox) {
         const moviesList = searchMovies(films, kyeWord, checkBox)
         setFoundMovies(moviesList)
         localStorage.setItem('movies', JSON.stringify(moviesList))
         setIsLoadingComplited(true)
-    }
-
-    function showMovies(movies) {
-        movies.forEach((movie) => {
-            movie.thumbnail = `${moviesURL}${movie.image.formats.thumbnail.url}`
-            movie.image = `${moviesURL}${movie.image.url}`
-        })
     }
 
     function handleSearchMovies(keyWord, checkBox) {
@@ -163,7 +151,7 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
                     <span className="movies__message-error">{searchMessage}</span>
                 )
             )}
-            {more && <More more={moreMoviesLoad} />}
+            {more && <More isLoad={loadMoreMovies} />}
             <Footer />
         </section>
     )

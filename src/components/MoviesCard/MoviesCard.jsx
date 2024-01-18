@@ -2,6 +2,7 @@ import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
 import { matchPath } from 'react-router-dom';
 import { SaveButton } from '../SaveButton/SaveButton';
+import { getMovieTimeInMin } from '../../utils/constants'
 
 export function MoviesCard({ moviesPoster, moviesCardList, onSave, onDelete }) {
     const location = useLocation()
@@ -22,12 +23,6 @@ export function MoviesCard({ moviesPoster, moviesCardList, onSave, onDelete }) {
         onDelete(moviesPoster)
     }
 
-    function movieTimeInMin(min) {
-        const hours = Math.trunc(min / 60)
-        const minutes = min % 60
-        return `${hours}ч ${minutes}м`
-    }
-
     return (
         <li className='movies-card' key={moviesPoster.id}>
             <a className='movies-card__link' href={moviesPoster.trailerLink} target='_blank' rel='noreferrer'>
@@ -38,7 +33,7 @@ export function MoviesCard({ moviesPoster, moviesCardList, onSave, onDelete }) {
             <button type="button" className="movies-card__delete" onClick = {handleDelete}></button>)}
             <div className='movies-card__info'>
                 <h2 className='movies-card__title'>{moviesPoster.nameRU}</h2>
-                <p className='movies-card__duration'>{movieTimeInMin(moviesPoster.duration)}</p>
+                <p className='movies-card__duration'>{getMovieTimeInMin(moviesPoster.duration)}</p>
             </div>
         </li>
     )
