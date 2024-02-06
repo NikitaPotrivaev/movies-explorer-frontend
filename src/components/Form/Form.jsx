@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import './Form.css';
 import { Logo } from "../Logo/Logo";
+import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
 
-export function Form({children, title, text, linkCaption, linkText, path, onSubmit, isDisabled, isValid}) {
+export function Form({children, title, text, linkCaption, linkText, path, onSubmit, isDisabled, isValid, successfulText, errorText, isOpen, onClose, status }) {
 
     return (
+        <>
         <section className="form">
             <div className="form__header">
                 <Logo />
@@ -21,5 +23,13 @@ export function Form({children, title, text, linkCaption, linkText, path, onSubm
                 </div>
             </form>
         </section>
+        <InfoTooltip
+            successfulText = { successfulText }
+            errorText = { errorText }
+            isOpen = { isOpen }
+            onClose = { onClose }
+            status = { status }
+         />
+        </>
     )
 }

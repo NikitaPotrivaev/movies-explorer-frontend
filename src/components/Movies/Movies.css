@@ -4,3 +4,11 @@
     align-self: center;
     width: 100%;
 }
+
+.movies__message-error {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffff;
+}

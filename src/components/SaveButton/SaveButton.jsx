@@ -1,14 +1,8 @@
 import './SaveButton.css';
-import { useState } from 'react';
 
-export function SaveButton() {
-    const [isMarked, setIsMarked] = useState(false)
-
-    function handleMark() {
-        setIsMarked(!isMarked)
-    }
+export function SaveButton({ click, isSaved }) {
 
     return (
-        <button className={!isMarked ? 'movies-card__save' : 'movies-card__marked'} onClick={handleMark}></button>
+        <button className={!isSaved ? 'movies-card__save' : 'movies-card__marked'} onClick={click}></button>
     )
 }

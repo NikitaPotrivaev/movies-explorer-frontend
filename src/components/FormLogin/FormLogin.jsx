@@ -1,13 +1,14 @@
 import './FormLogin.css'
 import { Form } from '../Form/Form';
-import { useFormValidation } from '../hooks/useFormValidation';
+import { useFormValidation } from '../../hooks/useFormValidation';
 
-export function FormLogin() {
+export function FormLogin({ onLogin, isOpen, onClose, status }) {
 
     const { values, handleChange, errors, isValid } = useFormValidation()
 
     function handleSubmit(e) {
         e.preventDefault()
+        onLogin(values["email"], values["password"])
     }
 
     return(
@@ -20,11 +21,15 @@ export function FormLogin() {
                 text='Войти'
                 linkCaption='Ещё не зарегистрированы?'
                 linkText='Регистрация'
+                errorText = 'Неправильные почта или пароль.'
+                isOpen = { isOpen }
+                onClose = { onClose }
+                status = { status }
                 path="/signup"
             >
             <div className='input'>
                 <p className='input__info'>E-mail</p>
-                <input name='email' className='input__element' type='email' value={values.email || '' } onChange={ handleChange } minLength="2" maxLength="40" required />
+                <input name='email' pattern="^\w+@\w+\.\w{2,}(\.\w{2,})*$" className='input__element' type='email' onChange = { handleChange } value={values.email || '' } minLength="2" maxLength="40" required />
                     <span className='input__error input__error_active'>{errors.email || '' }</span>
             </div>
             <div className='input'>
