@@ -30,6 +30,6 @@ export function NavTab() {
                 }
               }}
             >Студент</a>
-  </nav>
+        </nav>
     )
 }

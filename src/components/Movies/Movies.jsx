@@ -85,13 +85,11 @@ export function Movies({ isLoggedin, onSave, onDelete, moviesCardList }) {
     }, [keyWord, checkBox, originalMovies])
 
     useEffect(() => {
-        if (loadMovies) {
             if (loadMovies.length === foundMovies.length) {
                 setMore(false)
             } else {
                 setMore(true)
             }
-        }
     }, [foundMovies, loadMovies])
 
     function searchAndfilterMovies(films, kyeWord, checkBox) {
